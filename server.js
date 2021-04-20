@@ -1,9 +1,11 @@
 // Import dependancies
+
 require('dotenv').config({ path: '.env' });
 const express = require('express')
 const { graphqlHTTP } = require('express-graphql')
 const { buildSchema } = require('graphql')
 const fetch = require("node-fetch");
+const cors = require('cors');
 
 
 const schema = buildSchema(`
@@ -58,6 +60,7 @@ const root = {
 
 // Create an express app
 const app = express()
+app.use(cors());
 
 
 // Define a route for GraphQL
